@@ -27,8 +27,8 @@ const mapDispatchToProps = (dispatch) => {
     dispatch(setPostsActionCreator(posts));
   };
 
-  const addLikes = () => {
-    dispatch(addLikesActionCreator())
+  const addLikes = (id) => {
+    dispatch(addLikesActionCreator(id));
   }
 
   return {

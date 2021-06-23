@@ -49,10 +49,11 @@ const server = http.createServer((req, res) => {
         })
     }
 
-    if (req.url === '/api/addLikes') {
+    if (req.url === '/api/addLike') {
         req.on('data', data => {
-            state.posts.countLikes = JSON.posts.countLikes;
-            console.log(state.posts.countLikes)
+            let a = JSON.parse(data.toString('utf-8')).like;
+            state.posts[a.id].countLikes = a.countLikes;
+            //console.log(state.posts.countLikes)
         });
         req.on('end', () => {
             res.writeHead(200, { 'Content-Type': 'text/html' })

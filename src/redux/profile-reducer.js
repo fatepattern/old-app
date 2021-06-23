@@ -5,8 +5,8 @@ const UPDATE_NEW_POST_TEXT = 'UPDATE_NEW_POST_TEXT'
 const SETPOSTS = 'SETPOSTS'
 const ADD_LIKES = 'ADD_LIKES'
 
-export const addPostActionCreator = () => {
-    return {type: ADD_POST};
+export const addPostActionCreator = (id) => {
+    return {type: ADD_POST, id: id};
 }
 
 export const updateNewPostTextActionCreator = (text) => {
@@ -17,8 +17,8 @@ export const setPostsActionCreator = (posts) => {
     return {type: SETPOSTS, posts: posts};
 }
 
-export const addLikesActionCreator = () => {
-    return {type: ADD_LIKES}
+export const addLikesActionCreator = (id) => {
+    return {type: ADD_LIKES, id: id.id}
 }
 
 let initialState = {
@@ -45,10 +45,15 @@ export const profileReducer = (state = initialState, action) => {
             return {...state, posts: action.posts};
         case ADD_LIKES:
             let stateCopy2 = {...state};
-            // let id = stateCopy2.posts.id;
-            let newLikes = stateCopy2.posts[0].countLikes + 1;
-            stateCopy2.posts[0].countLikes = newLikes;
-            axios.post('http://localhost:8080/api/addLike', {countLikes: stateCopy2.posts.countLikes});
+            let a = [];
+            for (let i = 0; i < state.posts.length; i++) {
+                a.push(state.posts[i])
+            }
+            stateCopy2.posts = a;
+            //let newLikes = 0;
+            stateCopy2.posts[action.id] = {id: action.id, message: stateCopy2.posts[action.id].message, countLikes: stateCopy2.posts[action.id].countLikes + 1};
+            //stateCopy2.posts[action.id].countLikes = newLikes;
+            axios.post('http://localhost:8080/api/addLike', {like:{id:action.id, countLikes: stateCopy2.posts[action.id].countLikes}});
             return stateCopy2;
         default:
             return state;
