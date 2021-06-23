@@ -5,8 +5,8 @@ export let store = {
     _state : {
         profilePage : {
             posts : [
-                {id:0, message:'This is news', countLikes:14937, countDislikes:0},
-                {id:1, message:'Heyyy its Oleg Post',  counstLikes:9458, countDislikes:0}
+                {id:0, message:'This is news', countLikes:14937},
+                {id:1, message:'Heyyy its Oleg Post',  countLikes:9458}
             ],
     
             newPostText : ''

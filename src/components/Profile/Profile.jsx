@@ -8,7 +8,7 @@ const Profile = () => {
         <ProfileInfo />
         <MyPostsContainer />
     </div>
-    )
+)
 }
 
 export default Profile;

@@ -9,8 +9,8 @@ let state = {
         { id: 3, name: 'Sonja', followed: true, status: 'hey', location: { country: 'Germany', city: 'Munich' } }
     ],
     posts: [
-        { id: 0, message: 'This is some news', countLikes: 14937, countDislikes: 0 },
-        { id: 1, message: 'Heyyy its Oleg Post', counstLikes: 9458, countDislikes: 0 }
+        { id: 0, message: 'This is some news', countLikes: 14937},
+        { id: 1, message: 'Heyyy its Oleg Post', countLikes: 9458}
     ],
     auth:{
         login:'oleg',
@@ -46,6 +46,17 @@ const server = http.createServer((req, res) => {
         req.on('end', () => {
             res.writeHead(200, { 'Content-Type': 'text/html' })
             res.end('post received')
+        })
+    }
+
+    if (req.url === '/api/addLikes') {
+        req.on('data', data => {
+            state.posts.countLikes = JSON.posts.countLikes;
+            console.log(state.posts.countLikes)
+        });
+        req.on('end', () => {
+            res.writeHead(200, { 'Content-Type': 'text/html' })
+            res.end('like received')
         })
     }
 

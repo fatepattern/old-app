@@ -4,7 +4,6 @@ import s from './Users.module.css'
 
 class Users extends React.Component {
     getUsers() {
-        debugger;
         if (this.props.users.length === 0)
         axios.get('http://localhost:8080/api/getUsers')
         .then(response => {
@@ -13,7 +12,6 @@ class Users extends React.Component {
     }
 
     render() {
-        debugger;
         return (
             <div>
                 <button onClick={this.getUsers.bind(this)}>Get Users</button>

@@ -8,13 +8,12 @@ const MyPosts = (props) => {
     <Post
       message={post.message}
       countLikes={post.countLikes}
-      countDislikes={post.countDislikes}
+      addLikes ={props.addLikes}
+      id = {post.id}
     />
   ));
 
   let newPostElement = React.createRef();
-
-
 
   const addPost = () => {
     props.addPost();

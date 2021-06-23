@@ -1,5 +1,6 @@
 import { connect } from "react-redux";
 import {
+  addLikesActionCreator,
   addPostActionCreator,
   setPostsActionCreator,
   updateNewPostTextActionCreator,
@@ -26,10 +27,15 @@ const mapDispatchToProps = (dispatch) => {
     dispatch(setPostsActionCreator(posts));
   };
 
+  const addLikes = () => {
+    dispatch(addLikesActionCreator())
+  }
+
   return {
     addPost: addPost,
     updateNewPostText: updateNewPostText,
     setPosts: setPosts,
+    addLikes: addLikes,
   };
 };
 
